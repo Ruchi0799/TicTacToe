@@ -6,5 +6,7 @@ public class TicTacToeRunner {
         char[] boardArray=TicTacToe.initializeBoard();
         TicTacToe.userInput();
         TicTacToe.showBoard(boardArray);
+        TicTacToe.makeMove(boardArray);
+        TicTacToe.showBoard(boardArray);
     }
 }
