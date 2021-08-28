@@ -48,10 +48,12 @@ public class TicTacToe {
         Scanner sc = new Scanner(System.in);
         while (true) {
             System.out.println("What is your next move?");
-            userChoice=sc.nextInt();
-            if(Arrays.asList(validcells).contains(userChoice)&&isIndexEmpty())
+            userChoice = sc.nextInt();
+            if (Arrays.asList(validcells).contains(userChoice) && isIndexEmpty()) {
+                boardArray[userChoice]=playerLetter;
                 return userChoice;
 
+            }
         }
     }
 
