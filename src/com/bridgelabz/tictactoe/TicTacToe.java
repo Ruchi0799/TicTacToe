@@ -97,16 +97,12 @@ public class TicTacToe {
                 makeMoveComputer(boardArray);
             }
         }
-
-
     }
-
     public static boolean isIndexEmpty(){
         if (indexArray[userChoice]=='0'){
             indexArray[userChoice]='1';
             return true;
         }
-
         return false;
     }
 

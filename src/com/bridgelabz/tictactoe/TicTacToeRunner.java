@@ -7,6 +7,5 @@ public class TicTacToeRunner {
         game.userInput();
         game.showBoard(boardArray);
         game.playDine();
-
     }
 }
