@@ -8,8 +8,10 @@ public class TicTacToe {
     public static char playerLetter;
     public static char[] indexArray={'0','0','0','0','0','0','0','0','0','0',};
     public static int userChoice;
+    public static int playFirst;
+    public static char[] boardArray=new char[10];
     public static char[] initializeBoard(){
-        char[] boardArray=new char[10];
+
         for (int i=1;i< boardArray.length;i++)
         {
             boardArray[i]='_';
@@ -42,19 +44,61 @@ public class TicTacToe {
 
     }
 
-    public static int makeMove(char[] boardArray) {
+    public static void makeMovePlayer(char[] boardArray) {
+
 
         Integer[] validcells={1,2,3,4,5,6,7,8,9};
         Scanner sc = new Scanner(System.in);
-        while (true) {
-            System.out.println("What is your next move?");
+            System.out.println("What is your move player?");
             userChoice = sc.nextInt();
             if (Arrays.asList(validcells).contains(userChoice) && isIndexEmpty()) {
                 boardArray[userChoice]=playerLetter;
-                return userChoice;
+                showBoard(boardArray);
+
 
             }
+
+    }
+    public static void makeMoveComputer(char[] boardArray) {
+
+
+        Integer[] validcells={1,2,3,4,5,6,7,8,9};
+        Scanner sc = new Scanner(System.in);
+            System.out.println("What is your move computer?");
+            userChoice = sc.nextInt();
+            if (Arrays.asList(validcells).contains(userChoice) && isIndexEmpty()) {
+                boardArray[userChoice]=computerLetter;
+                showBoard(boardArray);
+
+
+            }
+
+    }
+
+    public static void playDine(){
+        Scanner sc = new Scanner(System.in);
+        playFirst=(int) ((Math.random()*10)%2);
+        int temp=playFirst;
+        System.out.println(temp);
+        if(playFirst==0)
+        {
+            makeMovePlayer(boardArray);
         }
+        else
+        {
+            makeMoveComputer(boardArray);
+        }
+        for (int i=temp+1;i<= temp+8;i++)
+        {
+            if(i%2==0){
+                makeMovePlayer(boardArray);
+            }
+            else if(i%2==1) {
+                makeMoveComputer(boardArray);
+            }
+        }
+
+
     }
 
     public static boolean isIndexEmpty(){
