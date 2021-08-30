@@ -249,7 +249,6 @@ public class TicTacToe {
         return true;
     }
     public static boolean isIndexEmpty(){
-        System.out.println("index array of userchoice"+indexArray[userChoice]);
         if (indexArray[userChoice]=='0'){
             return true;
         }
