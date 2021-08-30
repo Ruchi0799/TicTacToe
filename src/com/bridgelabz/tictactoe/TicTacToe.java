@@ -80,18 +80,6 @@ public class TicTacToe {
                 userChoice=random.nextInt(9)+1;
             }
         }
-        else if(boardArray[1]==computerLetter && boardArray[3]==computerLetter||boardArray[6]==computerLetter && boardArray[8]==computerLetter
-                ||boardArray[1]==playerLetter && boardArray[3]==playerLetter||boardArray[6]==playerLetter && boardArray[8]==playerLetter)
-        {
-            userChoice=2;
-            if(isIndexEmpty()){
-                userChoice=2;
-            }
-            else
-            {
-                userChoice=random.nextInt(9)+1;
-            }
-        }
         else if(boardArray[2]==computerLetter && boardArray[3]==computerLetter||boardArray[4]==computerLetter && boardArray[7]==computerLetter||boardArray[5]==computerLetter && boardArray[9]==computerLetter
                 ||boardArray[2]==playerLetter && boardArray[3]==playerLetter||boardArray[4]==playerLetter && boardArray[7]==playerLetter||boardArray[5]==playerLetter && boardArray[9]==playerLetter)
         {
@@ -104,6 +92,43 @@ public class TicTacToe {
                 userChoice=random.nextInt(9)+1;
             }
         }
+        else if(boardArray[1]==computerLetter && boardArray[4]==computerLetter||boardArray[5]==computerLetter && boardArray[3]==computerLetter||boardArray[8]==computerLetter && boardArray[9]==computerLetter
+                ||boardArray[1]==playerLetter && boardArray[4]==playerLetter||boardArray[5]==playerLetter && boardArray[3]==playerLetter||boardArray[8]==playerLetter && boardArray[9]==playerLetter)
+        {
+            userChoice=7;
+            if(isIndexEmpty()){
+                userChoice=7;
+            }
+            else
+            {
+                userChoice=random.nextInt(9)+1;
+            }
+        }
+        else if(boardArray[3]==computerLetter && boardArray[6]==computerLetter||boardArray[7]==computerLetter && boardArray[8]==computerLetter||boardArray[1]==computerLetter && boardArray[5]==computerLetter
+                ||boardArray[3]==playerLetter && boardArray[6]==playerLetter||boardArray[7]==playerLetter && boardArray[8]==playerLetter||boardArray[1]==playerLetter && boardArray[5]==playerLetter)
+        {
+            userChoice=9;
+            if(isIndexEmpty()){
+                userChoice=9;
+            }
+            else
+            {
+                userChoice=random.nextInt(9)+1;
+            }
+        }
+        else if(boardArray[1]==computerLetter && boardArray[3]==computerLetter||boardArray[6]==computerLetter && boardArray[8]==computerLetter
+                ||boardArray[1]==playerLetter && boardArray[3]==playerLetter||boardArray[6]==playerLetter && boardArray[8]==playerLetter)
+        {
+            userChoice=2;
+            if(isIndexEmpty()){
+                userChoice=2;
+            }
+            else
+            {
+                userChoice=random.nextInt(9)+1;
+            }
+        }
+
         else if(boardArray[1]==computerLetter && boardArray[7]==computerLetter||boardArray[5]==computerLetter && boardArray[6]==computerLetter
                 ||boardArray[1]==playerLetter && boardArray[7]==playerLetter||boardArray[5]==playerLetter && boardArray[6]==playerLetter)
         {
@@ -140,18 +165,7 @@ public class TicTacToe {
                 userChoice=random.nextInt(9)+1;
             }
         }
-        else if(boardArray[1]==computerLetter && boardArray[4]==computerLetter||boardArray[5]==computerLetter && boardArray[3]==computerLetter||boardArray[8]==computerLetter && boardArray[9]==computerLetter
-                ||boardArray[1]==playerLetter && boardArray[4]==playerLetter||boardArray[5]==playerLetter && boardArray[3]==playerLetter||boardArray[8]==playerLetter && boardArray[9]==playerLetter)
-        {
-            userChoice=7;
-            if(isIndexEmpty()){
-                userChoice=7;
-            }
-            else
-            {
-                userChoice=random.nextInt(9)+1;
-            }
-        }
+
         else if(boardArray[2]==computerLetter && boardArray[5]==computerLetter||boardArray[7]==computerLetter && boardArray[9]==computerLetter
                 ||boardArray[2]==playerLetter && boardArray[5]==playerLetter||boardArray[7]==playerLetter && boardArray[9]==playerLetter)
         {
@@ -164,18 +178,7 @@ public class TicTacToe {
                 userChoice=random.nextInt(9)+1;
             }
         }
-        else if(boardArray[3]==computerLetter && boardArray[6]==computerLetter||boardArray[7]==computerLetter && boardArray[8]==computerLetter||boardArray[1]==computerLetter && boardArray[5]==computerLetter
-                ||boardArray[3]==playerLetter && boardArray[6]==playerLetter||boardArray[7]==playerLetter && boardArray[8]==playerLetter||boardArray[1]==playerLetter && boardArray[5]==playerLetter)
-        {
-            userChoice=9;
-            if(isIndexEmpty()){
-                userChoice=9;
-            }
-            else
-            {
-                userChoice=random.nextInt(9)+1;
-            }
-        }
+
         else {
             userChoice=random.nextInt(9)+1;
         }
@@ -184,15 +187,14 @@ public class TicTacToe {
         boolean ans=Arrays.asList(validcells).contains(userChoice) && isIndexEmpty();
         System.out.println(ans);
         if(ans==true){
-            System.out.println("I am in if part of computer");
+
             boardArray[userChoice]=computerLetter;
             indexArray[userChoice]='1';
             System.out.println("After Computer move");
             showBoard(boardArray);
         }
         else if(ans==false){
-            System.out.println(ans);
-            System.out.println("I am in computer else part");
+
             makeMoveComputer(boardArray);
         }
 
@@ -204,7 +206,7 @@ public class TicTacToe {
         playFirst = (int) ((Math.random() * 10) % 2);
         int temp = playFirst;
         int dine=1;
-        System.out.println(temp);
+
 
         if (playFirst == 0) {
             makeMovePlayer(boardArray);
