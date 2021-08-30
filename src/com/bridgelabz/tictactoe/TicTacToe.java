@@ -1,6 +1,7 @@
 package com.bridgelabz.tictactoe;
 
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 public class TicTacToe {
@@ -61,42 +62,169 @@ public class TicTacToe {
     }
     public static void makeMoveComputer(char[] boardArray) {
 
-
+        Random random=new Random();
         Integer[] validcells={1,2,3,4,5,6,7,8,9};
-        Scanner sc = new Scanner(System.in);
-            System.out.println("What is your move computer?");
-            userChoice = sc.nextInt();
-            if (Arrays.asList(validcells).contains(userChoice) && isIndexEmpty()) {
-                boardArray[userChoice]=computerLetter;
-                showBoard(boardArray);
 
-
+            if(boardArray[1]==computerLetter && boardArray[2]==computerLetter || boardArray[5]==computerLetter && boardArray[7]==computerLetter||boardArray[6]==computerLetter && boardArray[9]==computerLetter)
+            {
+                userChoice=3;
+                if(isIndexEmpty()){
+                    userChoice=3;
+                }
+                else
+                {
+                    userChoice=random.nextInt(9)+1;
+                }
             }
+        else if(boardArray[1]==computerLetter && boardArray[3]==computerLetter||boardArray[6]==computerLetter && boardArray[8]==computerLetter)
+        {
+            userChoice=2;
+            if(isIndexEmpty()){
+                userChoice=2;
+            }
+            else
+            {
+                userChoice=random.nextInt(9)+1;
+            }
+        }
+            else if(boardArray[2]==computerLetter && boardArray[3]==computerLetter||boardArray[4]==computerLetter && boardArray[7]==computerLetter||boardArray[5]==computerLetter && boardArray[9]==computerLetter)
+            {
+                userChoice=1;
+                if(isIndexEmpty()){
+                    userChoice=1;
+                }
+                else
+                {
+                    userChoice=random.nextInt(9)+1;
+                }
+            }
+            else if(boardArray[1]==computerLetter && boardArray[7]==computerLetter||boardArray[5]==computerLetter && boardArray[6]==computerLetter)
+            {
+                userChoice=4;
+                if(isIndexEmpty()){
+                    userChoice=4;
+                }
+                else
+                {
+                    userChoice=random.nextInt(9)+1;
+                }
+            }
+            else if(boardArray[2]==computerLetter && boardArray[8]==computerLetter||boardArray[4]==computerLetter && boardArray[6]==computerLetter||boardArray[3]==computerLetter && boardArray[7]==computerLetter||boardArray[1]==computerLetter && boardArray[9]==computerLetter)
+            {
+                userChoice=5;
+                if(isIndexEmpty()){
+                    userChoice=5;
+                }
+                else
+                {
+                    userChoice=random.nextInt(9)+1;
+                }
+            }
+            else if(boardArray[4]==computerLetter && boardArray[5]==computerLetter||boardArray[3]==computerLetter && boardArray[9]==computerLetter)
+            {
+                userChoice=6;
+                if(isIndexEmpty()){
+                    userChoice=6;
+                }
+                else
+                {
+                    userChoice=random.nextInt(9)+1;
+                }
+            }
+            else if(boardArray[1]==computerLetter && boardArray[4]==computerLetter||boardArray[5]==computerLetter && boardArray[3]==computerLetter||boardArray[8]==computerLetter && boardArray[9]==computerLetter)
+            {
+                userChoice=7;
+                if(isIndexEmpty()){
+                    userChoice=7;
+                }
+                else
+                {
+                    userChoice=random.nextInt(9)+1;
+                }
+            }
+            else if(boardArray[2]==computerLetter && boardArray[5]==computerLetter||boardArray[7]==computerLetter && boardArray[9]==computerLetter)
+            {
+                userChoice=8;
+                if(isIndexEmpty()){
+                    userChoice=8;
+                }
+                else
+                {
+                    userChoice=random.nextInt(9)+1;
+                }
+            }
+            else if(boardArray[3]==computerLetter && boardArray[6]==computerLetter||boardArray[7]==computerLetter && boardArray[8]==computerLetter||boardArray[1]==computerLetter && boardArray[5]==computerLetter)
+            {
+                userChoice=9;
+                if(isIndexEmpty()){
+                    userChoice=9;
+                }
+                else
+                {
+                    userChoice=random.nextInt(9)+1;
+                }
+            }
+            else {
+                userChoice=random.nextInt(9)+1;
+            }
+        System.out.println("COMPUTER CHOICE IS "+userChoice);
+        if (Arrays.asList(validcells).contains(userChoice) && isIndexEmpty()) {
+            //System.out.println("I am inside valis cells");
+            boardArray[userChoice]=computerLetter;
+            System.out.println("After Computer move");
+            showBoard(boardArray);
+        }
+        else {
+
+            makeMoveComputer(boardArray);
+        }
+
 
     }
 
-    public static void playDine(){
+    public static void playDine() {
         Scanner sc = new Scanner(System.in);
-        playFirst=(int) ((Math.random()*10)%2);
-        int temp=playFirst;
-        System.out.println(temp);
-        if(playFirst==0)
-        {
+        playFirst = (int) ((Math.random() * 10) % 2);
+        int temp = playFirst;
+        int dine=1;
+
+        if (playFirst == 0) {
             makeMovePlayer(boardArray);
-        }
-        else
-        {
+        } else {
             makeMoveComputer(boardArray);
         }
-        for (int i=temp+1;i<= temp+8;i++)
-        {
-            if(i%2==0){
-                makeMovePlayer(boardArray);
-            }
-            else if(i%2==1) {
-                makeMoveComputer(boardArray);
+        while (haveWon() || temp==9 ) {
+           temp++;
+                if (temp % 2 == 0) {
+                    makeMovePlayer(boardArray);
+                } else if (temp % 2 == 1) {
+                    makeMoveComputer(boardArray);
+                }
             }
         }
+
+
+    public static boolean haveWon(){
+        if(boardArray[1]==playerLetter && boardArray[2]==playerLetter && boardArray[3]==playerLetter ||
+                boardArray[1]==computerLetter && boardArray[2]==computerLetter && boardArray[3]==computerLetter ||
+                boardArray[4]==playerLetter && boardArray[5]==playerLetter && boardArray[6]==playerLetter ||
+                boardArray[4]==computerLetter && boardArray[5]==computerLetter && boardArray[6]==computerLetter ||
+                boardArray[7]==playerLetter && boardArray[8]==playerLetter && boardArray[9]==playerLetter ||
+                boardArray[7]==computerLetter && boardArray[8]==computerLetter && boardArray[9]==computerLetter ||
+                boardArray[1]==playerLetter && boardArray[4]==playerLetter && boardArray[7]==playerLetter ||
+                boardArray[1]==computerLetter && boardArray[4]==computerLetter && boardArray[7]==computerLetter ||
+                boardArray[2]==playerLetter && boardArray[5]==playerLetter && boardArray[8]==playerLetter ||
+                boardArray[2]==computerLetter && boardArray[5]==computerLetter && boardArray[8]==computerLetter ||
+                boardArray[3]==playerLetter && boardArray[6]==playerLetter && boardArray[9]==playerLetter ||
+                boardArray[3]==computerLetter && boardArray[6]==computerLetter && boardArray[9]==computerLetter ||
+                boardArray[1]==playerLetter && boardArray[5]==playerLetter && boardArray[9]==playerLetter ||
+                boardArray[1]==computerLetter && boardArray[9]==computerLetter && boardArray[9]==computerLetter
+        )
+        {
+            System.out.println("Congratulations you won");
+            return false;
+        }
+        return true;
     }
     public static boolean isIndexEmpty(){
         if (indexArray[userChoice]=='0'){
