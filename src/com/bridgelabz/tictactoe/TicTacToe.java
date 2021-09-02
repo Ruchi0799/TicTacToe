@@ -203,6 +203,7 @@ public class TicTacToe {
     }
 
     public static void playDine() {
+        indexArray= new char[]{'0', '0', '0', '0', '0', '0', '0', '0', '0', '0',};
         Scanner sc = new Scanner(System.in);
         playFirst = (int) ((Math.random() * 10) % 2);
         int temp = playFirst;
@@ -214,7 +215,7 @@ public class TicTacToe {
         } else {
             makeMoveComputer(boardArray);
         }
-        while (haveWon() || temp==9 ) {
+        while (haveWon() || temp!=8 ) {
             temp++;
             System.out.println(temp);
             if (temp % 2 == 0) {
@@ -222,6 +223,7 @@ public class TicTacToe {
             } else if (temp % 2 == 1) {
                 makeMoveComputer(boardArray);
             }
+
         }
     }
 
